@@ -1,0 +1,29 @@
+{
+  "name": "hain-plugin-todo",
+  "version": "0.0.1",
+  "description": "Manage your tasks easily",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metrakit/hain-plugin-todo.git"
+  },
+  "author": "Jordane JOUFFROY",
+  "license": "MIT",
+  "keywords": [
+    "hain0"
+  ],
+  "bugs": {
+    "url": "https://github.com/metrakit/hain-plugin-todo/issues"
+  },
+  "homepage": "https://github.com/metrakit/hain-plugin-todo",
+  "dependencies": {
+    "lodash": "^4.6.1",
+    "jsonfile": "^2.2.3"
+  },
+  "hain": {
+    "prefix": "/todo",
+    "usage": "/todo drink a coffee",
+    "icon": "/icon.png",
+    "redirect": "/todo "
+  }
+}
