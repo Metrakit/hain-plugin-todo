@@ -5,9 +5,12 @@ const jsonfile = require('jsonfile');
 const crypto   = require('crypto');
 const options  = require('./package.json').hain;
 
-module.exports = (context) => {
+module.exports = (pluginContext) => {
 
-    const logger = context.logger;
+    const logger = pluginContext.logger;
+    const app = pluginContext.app;
+    const toast = pluginContext.toast;
+
     var tasks = [];
     var repo = "";
     var todofile = "";
@@ -15,7 +18,7 @@ module.exports = (context) => {
     var global_res;
 
     function startup() {
-        repo = context.MAIN_PLUGIN_REPO;
+        repo = pluginContext.MAIN_PLUGIN_REPO;
         todofile = `${repo}/hain-plugin-todo/todolist.json`;
         jsonfile.readFile(todofile, function(err, obj) {
             if (obj.length > 0) {
@@ -81,10 +84,10 @@ module.exports = (context) => {
         if (payload === 'add') {
             tasks.push(obj);
             jsonfile.writeFile(todofile, tasks);
-            context.app.toast.enqueue('Task added !');
+            toast.enqueue('Task added !');//todo
         } else if (payload === 'done' && obj) {
             tasks = _.filter(tasks, function(task) { return task.id !== obj; });
-            context.app.toast.enqueue('Task done !');
+            toast.enqueue('Task done !');
         }
 
         if (tasks === undefined) {
@@ -92,7 +95,7 @@ module.exports = (context) => {
         }
 
         jsonfile.writeFile(todofile, tasks);
-        context.app.setInput(options.prefix);
+        app.setInput(options.prefix);
     }
 
     return { startup, search, execute };
