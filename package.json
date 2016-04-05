@@ -1,6 +1,6 @@
 {
   "name": "hain-plugin-todo",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage your tasks easily",
   "main": "index.js",
   "repository": {

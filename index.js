@@ -81,10 +81,10 @@ module.exports = (context) => {
         if (payload === 'add') {
             tasks.push(obj);
             jsonfile.writeFile(todofile, tasks);
-            app.toast.enqueue('Task added !');
+            context.app.toast.enqueue('Task added !');
         } else if (payload === 'done' && obj) {
             tasks = _.filter(tasks, function(task) { return task.id !== obj; });
-            app.toast.enqueue('Task done !');
+            context.app.toast.enqueue('Task done !');
         }
 
         if (tasks === undefined) {
