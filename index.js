@@ -95,7 +95,7 @@ module.exports = (pluginContext) => {
         }
 
         jsonfile.writeFile(todofile, tasks);
-        app.setInput(options.prefix);
+        app.setQuery(options.prefix + ' ');
     }
 
     return { startup, search, execute };
